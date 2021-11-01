@@ -66,7 +66,7 @@ class NoticeActivity : AppCompatActivity() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                
+
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
