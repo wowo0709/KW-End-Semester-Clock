@@ -8,14 +8,14 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textString"
         android:layout_width="114dp"
         android:layout_height="25dp"
         android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text=" 종강까지 얼마나..."
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintBottom_toTopOf="@+id/textClock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textClock"
         android:layout_width="351dp"
         android:layout_height="72dp"
         android:background="#5EFFFFFF"
@@ -31,26 +31,26 @@
         android:text="  ..일 ..시간 .. 분 ..초"
         android:textColor="#FFFFFF"
         android:textSize="44sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView14"
+        app:layout_constraintBottom_toBottomOf="@+id/textAppName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.26" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/btnWeather"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginStart="27dp"
         android:background="#00FFFFFF"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton11"
+        app:layout_constraintStart_toEndOf="@+id/btnNotice"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/wwwww" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textWeather"
         android:layout_width="65dp"
         android:layout_height="30dp"
         android:layout_marginStart="27dp"
@@ -61,12 +61,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton7"
+        app:layout_constraintStart_toEndOf="@+id/textNotice"
+        app:layout_constraintTop_toBottomOf="@+id/btnWeather"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textMeal"
         android:layout_width="65dp"
         android:layout_height="30dp"
         android:layout_marginStart="27dp"
@@ -76,12 +76,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton10"
+        app:layout_constraintStart_toEndOf="@+id/textWeather"
+        app:layout_constraintTop_toBottomOf="@+id/btnMeal"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/textNotice"
         android:layout_width="65dp"
         android:layout_height="30dp"
         android:layout_marginStart="27dp"
@@ -92,12 +92,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton11"
+        app:layout_constraintStart_toEndOf="@+id/textProfessor"
+        app:layout_constraintTop_toBottomOf="@+id/btnNotice"
         app:layout_constraintVertical_bias="0.003" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textProfessor"
         android:layout_width="65dp"
         android:layout_height="30dp"
         android:layout_marginStart="40dp"
@@ -109,11 +109,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton8"
+        app:layout_constraintTop_toBottomOf="@+id/btnProfessor"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/btnProfessor"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginStart="40dp"
@@ -125,7 +125,7 @@
         app:srcCompat="@drawable/professor3" />
 
     <ImageButton
-        android:id="@+id/imageButton10"
+        android:id="@+id/btnMeal"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginStart="27dp"
@@ -135,24 +135,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageButton7"
+        app:layout_constraintStart_toEndOf="@+id/btnWeather"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mmmeal" />
 
     <ImageButton
-        android:id="@+id/imageButton11"
+        android:id="@+id/btnNotice"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginStart="27dp"
         android:background="#00FFFFFF"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton8"
+        app:layout_constraintStart_toEndOf="@+id/btnProfessor"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/gongji1" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"

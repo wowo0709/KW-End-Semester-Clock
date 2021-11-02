@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
 import kr.co.kw_seniors.endsemesterclock.databinding.ActivityNoticeBinding
 import org.jsoup.Jsoup
 
@@ -24,15 +26,60 @@ class NoticeActivity : AppCompatActivity() {
         // HTML 문서 내에서 공지사항 아이템 태그의 경로
         const val ITEM_ROUTE = "div.notice div.list-box div.board-list-box ul li div"
     }
-
+    // 레이아웃 바인딩
     val binding by lazy{ActivityNoticeBinding.inflate(layoutInflater)}
+    // 프래그먼트
+    lateinit var commonNoticeFragment: CommonNoticeFragment
+    lateinit var bachelorNoticeFragment: BachelorNoticeFragment
+    lateinit var studentNoticeFragment: StudentNoticeFragment
+    lateinit var enrollNoticeFragment: EnrollNoticeFragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        // 탭 레이아웃
+        commonNoticeFragment = CommonNoticeFragment()
+        bachelorNoticeFragment = BachelorNoticeFragment()
+        studentNoticeFragment = StudentNoticeFragment()
+        enrollNoticeFragment = EnrollNoticeFragment()
+        // 처음 시작할 때 보이는 프래그먼트
+        supportFragmentManager.beginTransaction().add(R.id.frameLayout, commonNoticeFragment).commit()
+        // 탭 리스너
+        binding.tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when(tab?.position){
+                    0 -> {
+                        replaceView(commonNoticeFragment)
+                    }
+                    1 -> {
+                        replaceView(bachelorNoticeFragment)
+                    }
+                    2 -> {
+                        replaceView(studentNoticeFragment)
+                    }
+                    3 -> {
+                        replaceView(enrollNoticeFragment)
+                    }
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+        })
+
+
+
+
         // 웹 크롤링
-        for (category in arrayOf(0,1,2,4)) { // 각 카테고리에 대해
-            for (page in 1..MAX_PAGE) { // 10 페이지 만큼
+        for (category in arrayOf(0,1,2,4)) { // 각 카테고리에 대해,
+            for (page in 1..MAX_PAGE) { // 10 페이지 만큼,
                 var thread: Thread
                 if (page == 1) { // 각 공지사항 페이지의 1페이지만 주소가 다름
                     thread = Thread(UrlRun(PAGE1_FRONT_BASE_URL+"$category"+PAGE1_BACK_BASE_URL, page, applicationContext))
@@ -47,9 +94,19 @@ class NoticeActivity : AppCompatActivity() {
         }
         Log.d("NoticeActivity/OnCreate", "웹 크롤링 완료")
 
-
     }
-    // 웹 크롤링 스레드
+
+    // 탭 레이아웃 프래그먼트 교체 메서드
+    private fun replaceView(tab: Fragment){
+        var selectedFragment: Fragment? = null
+        selectedFragment = tab
+        selectedFragment?.let{
+            supportFragmentManager.beginTransaction().replace(R.id.frameLayout, it).commit()
+        }
+    }
+
+
+    // 웹 크롤링 스레드 클래스
     class UrlRun(var url: String, var pages: Int, var context: Context): Runnable{
         // TODO: 아이템 양식 정의
         // lateinit var items: Items
