@@ -8,6 +8,19 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:text="광운대 종강시계"
+        android:textColor="#FFFFFF"
+        android:background="#5EFFFFFF"
+        android:fontFamily="@font/malang"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/textString"
         android:layout_width="114dp"
         android:layout_height="25dp"
@@ -28,7 +41,7 @@
         android:layout_height="72dp"
         android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
-        android:text="  ..일 ..시간 .. 분 ..초"
+        android:text="  ..일 시간 .. 분 ..초"
         android:textColor="#FFFFFF"
         android:textSize="44sp"
         app:layout_constraintBottom_toBottomOf="@+id/textAppName"
@@ -37,130 +50,130 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.26" />
 
-    <ImageButton
-        android:id="@+id/btnWeather"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="27dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnNotice"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wwwww" />
-
     <TextView
         android:id="@+id/textWeather"
-        android:layout_width="65dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="120dp"
-        android:text=" Weather"
+        android:layout_width="122dp"
+        android:layout_height="20dp"
+        android:background="#5EFFFFFF"
+        android:fontFamily="@font/malang"
+        android:text="Weather"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textNotice"
-        app:layout_constraintTop_toBottomOf="@+id/btnWeather"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.885" />
 
     <TextView
         android:id="@+id/textMeal"
-        android:layout_width="65dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="4dp"
-        android:text="   Meal"
+        android:layout_width="122dp"
+        android:layout_height="20dp"
+        android:background="#5EFFFFFF"
+        android:fontFamily="@font/malang"
+        android:text="Meal"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toEndOf="@+id/textWeather"
-        app:layout_constraintTop_toBottomOf="@+id/btnMeal"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.886" />
 
     <TextView
         android:id="@+id/textNotice"
-        android:layout_width="65dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="240dp"
-        android:text="   Notice"
+        android:layout_width="122dp"
+        android:layout_height="20dp"
+        android:background="#5EFFFFFF"
+        android:fontFamily="@font/malang"
+        android:text="Notice"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textProfessor"
-        app:layout_constraintTop_toBottomOf="@+id/btnNotice"
-        app:layout_constraintVertical_bias="0.003" />
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.627" />
 
     <TextView
         android:id="@+id/textProfessor"
-        android:layout_width="65dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="280dp"
+        android:layout_width="122dp"
+        android:layout_height="20dp"
+        android:background="#5EFFFFFF"
+        android:fontFamily="@font/malang"
         android:text="Professor"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProfessor"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.628" />
 
     <ImageButton
         android:id="@+id/btnProfessor"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="122dp"
+        android:layout_height="122dp"
         android:background="#00FFFFFF"
-        android:scaleType="fitStart"
+        android:backgroundTint="#FFFFFF"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/professor3" />
+        app:layout_constraintVertical_bias="0.518"
+        app:srcCompat="@drawable/professor3"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/btnMeal"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="110dp"
+        android:layout_height="108dp"
         android:background="#00FFFFFF"
-        android:scaleType="fitStart"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnWeather"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mmmeal" />
+        app:layout_constraintVertical_bias="0.804"
+        app:srcCompat="@drawable/mmmeal"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/btnNotice"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="27dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnProfessor"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/gongji1" />
-
-    <TextView
-        android:id="@+id/textAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:text="광운대 종강시계"
-        android:textColor="#FFFFFF"
-        android:fontFamily="@font/malang"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:background="#00E3E3E3"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.52"
+        app:srcCompat="@drawable/gongji1"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnWeather"
+        android:layout_width="110dp"
+        android:layout_height="108dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812"
+        app:srcCompat="@drawable/wwwww"
+        tools:ignore="SpeakableTextPresentCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
