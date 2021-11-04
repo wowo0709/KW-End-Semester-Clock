@@ -51,4 +51,18 @@ class MainActivity : BaseActivity() {
             }
         }
     }
+    /* professor 버튼기능
+
+fun main() {
+
+    var btn: ImageButton = findViewById(R.id.btnProfessor)
+
+    btn.setOnClickListener{
+        main2()
+    }
+}
+
+fun main2() {
+    setContentView(R.layout.activity_professor)
+}   */
 }
