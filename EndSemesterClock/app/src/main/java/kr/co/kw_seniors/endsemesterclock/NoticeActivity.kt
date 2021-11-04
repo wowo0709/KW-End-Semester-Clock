@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import kr.co.kw_seniors.endsemesterclock.databinding.ActivityNoticeBinding
 import org.jsoup.Jsoup
@@ -28,39 +29,38 @@ class NoticeActivity : AppCompatActivity() {
     }
     // 레이아웃 바인딩
     val binding by lazy{ActivityNoticeBinding.inflate(layoutInflater)}
-    // 프래그먼트
-    lateinit var commonNoticeFragment: CommonNoticeFragment
-    lateinit var bachelorNoticeFragment: BachelorNoticeFragment
-    lateinit var studentNoticeFragment: StudentNoticeFragment
-    lateinit var enrollNoticeFragment: EnrollNoticeFragment
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        // 탭 레이아웃
-        commonNoticeFragment = CommonNoticeFragment()
-        bachelorNoticeFragment = BachelorNoticeFragment()
-        studentNoticeFragment = StudentNoticeFragment()
-        enrollNoticeFragment = EnrollNoticeFragment()
-        // 처음 시작할 때 보이는 프래그먼트
-        supportFragmentManager.beginTransaction().add(R.id.frameLayout, commonNoticeFragment).commit()
-        // 탭 리스너
+        // 리사이클러 뷰
+        val data = loadData()
+
+        val adapter = NoticeRecyclerAdapter()
+        adapter.listData = data
+        binding.recyclerViewNotice.adapter = adapter
+        binding.recyclerViewNotice.layoutManager = LinearLayoutManager(this)
+
+        // TODO: 처음 시작 시 출력되는 데이터
+
+
+        // TODO: 탭 리스너 - Room에서 가져올 데이터 지정
         binding.tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when(tab?.position){
                     0 -> {
-                        replaceView(commonNoticeFragment)
+
                     }
                     1 -> {
-                        replaceView(bachelorNoticeFragment)
+
                     }
                     2 -> {
-                        replaceView(studentNoticeFragment)
+
                     }
                     3 -> {
-                        replaceView(enrollNoticeFragment)
+
                     }
                 }
             }
@@ -96,6 +96,7 @@ class NoticeActivity : AppCompatActivity() {
 
     }
 
+    /* Non-used
     // 탭 레이아웃 프래그먼트 교체 메서드
     private fun replaceView(tab: Fragment){
         var selectedFragment: Fragment? = null
@@ -103,6 +104,18 @@ class NoticeActivity : AppCompatActivity() {
         selectedFragment?.let{
             supportFragmentManager.beginTransaction().replace(R.id.frameLayout, it).commit()
         }
+    }
+     */
+
+    // Room에 저장된 아이템 리스트 불러오기
+    private fun loadData(): MutableList<NoticeRecyclerItem>{
+        val data: MutableList<NoticeRecyclerItem> = mutableListOf()
+
+        // TODO: Room의 데이터 가져오기
+
+
+
+        return data
     }
 
 
