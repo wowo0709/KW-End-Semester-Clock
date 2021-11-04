@@ -28,7 +28,11 @@ class MainActivity : BaseActivity() {
             val intent = Intent(this, NoticeActivity::class.java)
             startActivity(intent)
         }
-
+        // 교수 버튼 리스너
+        binding.btnProfessor.setOnClickListener {
+            val intent = Intent(this, ProfessorActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -42,27 +46,15 @@ class MainActivity : BaseActivity() {
     }
     // 권한 거부 시
     override fun permissionDenied(requestCode: Int) {
-        when(requestCode){
+        when (requestCode) {
             PERM_INTERNET -> {
-                Toast.makeText(baseContext,
+                Toast.makeText(
+                    baseContext,
                     "인터넷 접근 권한을 승인해야 앱을 사용할 수 있습니다.",
-                    Toast.LENGTH_LONG).show()
+                    Toast.LENGTH_LONG
+                ).show()
                 finish()
             }
         }
     }
-    /* professor 버튼기능
-
-fun main() {
-
-    var btn: ImageButton = findViewById(R.id.btnProfessor)
-
-    btn.setOnClickListener{
-        main2()
-    }
-}
-
-fun main2() {
-    setContentView(R.layout.activity_professor)
-}   */
 }

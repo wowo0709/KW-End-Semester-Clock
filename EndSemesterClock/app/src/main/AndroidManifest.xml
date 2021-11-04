@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kr.co.kw_seniors.endsemesterclock">
     <!-- 권한 명세 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EndSemesterClock">
+        <activity
+            android:name=".ProfessorActivity"
+            android:exported="true"
+            android:label="@string/title_activity_professor"
+            android:theme="@style/Theme.EndSemesterClock.NoActionBar" />
         <activity android:name=".NoticeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
