@@ -22,7 +22,7 @@ class NoticeRecyclerAdapter: RecyclerView.Adapter<NoticeRecyclerAdapter.NoticeRe
 
         // 아이템에 데이터를 세팅
         fun setNoticeItem(item: NoticeItem){
-            binding.textNo.text = item.no.toString()
+            binding.textCategory.text = item.category
             binding.textTitle.text = item.title
             binding.textInfo.text = item.info
 
