@@ -15,6 +15,8 @@ class NoticeItem {
     @ColumnInfo
     var url: String = ""
     @ColumnInfo
+    var category = ""
+    @ColumnInfo
     var title = ""
     @ColumnInfo
     var info = ""
@@ -22,8 +24,9 @@ class NoticeItem {
     @Ignore 어노테이션을 적용하면 해당 변수가 테이블과 관계없는 변수임을 나타낼 수 있다.
      */
     // 생성자 작성하기
-    constructor(url: String, title: String, info: String){
+    constructor(url: String, category: String, title: String, info: String){
         this.url = url
+        this.category = category
         this.title = title
         this.info = info
     }
