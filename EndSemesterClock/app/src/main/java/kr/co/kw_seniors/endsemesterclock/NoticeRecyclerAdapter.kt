@@ -1,7 +1,10 @@
 package kr.co.kw_seniors.endsemesterclock
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import kr.co.kw_seniors.endsemesterclock.databinding.NoticeRecyclerItemBinding
 
@@ -25,6 +28,11 @@ class NoticeRecyclerAdapter: RecyclerView.Adapter<NoticeRecyclerAdapter.NoticeRe
             binding.textCategory.text = item.category
             binding.textTitle.text = item.title
             binding.textInfo.text = item.info
+            // 아이템 클릭 시 url 연결
+            itemView.setOnClickListener{
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.url))
+                binding.root.context.startActivity(intent)
+            }
 
         }
 
