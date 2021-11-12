@@ -9,55 +9,66 @@
         <item>정책법학대학</item>
         <item>경영대학</item>
         <item>인제니움학부</item>
-        <item>동북아대학</item>
     </string-array>
+
     <string-array name="array_전자정보공과대학">
         <item>전자공학과</item>
         <item>전자통신공학과</item>
         <item>전자융합공학과</item>
         <item>전기공학과</item>
         <item>전자재료공학과</item>
-        <item>로봇학부</item>
+        <item>로봇학부:정보제어</item>
+        <item>로봇학부:지능시스템</item>
     </string-array>
+
     <string-array name="array_소프트웨어융합대학">
         <item>소프트웨어학부</item>
         <item>컴퓨터정보공학부</item>
         <item>정보융합학부</item>
     </string-array>
+
     <string-array name="array_공과대학">
         <item>건축공학과</item>
         <item>화학공학과</item>
         <item>환경공학과</item>
         <item>건축학과</item>
     </string-array>
+
     <string-array name="array_자연과학대학">
         <item>수학과</item>
         <item>전자바이오물리학과</item>
         <item>화학과</item>
         <item>스포츠융합과학과</item>
-        <item>정보콘텐츠학과</item>
+        <item>정보콘텐츠학과(야)</item>
     </string-array>
+
     <string-array name="array_인문사회과학대학">
         <item>국어국문학과</item>
         <item>영어산업학과</item>
-        <item>미디어커뮤니케이션학부</item>
+        <item>미디어커뮤니케이션학부:미디어엔터테인먼트</item>
+        <item>미디어커뮤니케이션학부:인터랙티브미디어커뮤니케이션</item>
+        <item>미디어커뮤니케이션학부:전략커뮤니케이션</item>
         <item>산업심리학과</item>
-        <item>동북아문화산업학부</item>
+        <item>동북아문화산업부:문화교류</item>
+        <item>동북아문화산업부:문화콘텐츠개발</item>
     </string-array>
+
     <string-array name="array_정책법학대학">
         <item>행정학과</item>
-        <item>법학부</item>
-        <item>국제학부</item>
-        <item>자산관리학과</item>
+        <item>법학부:일반법학</item>
+        <item>법학부:국제법무</item>
+        <item>법학부:과학기술법무</item>
+        <item>국제학부:국제지역</item>
+        <item>자산관리학과(야)</item>
     </string-array>
+
     <string-array name="array_경영대학">
-        <item>경영학부</item>
-        <item>국제통상학부</item>
+        <item>경영학부:경영학</item>
+        <item>국제통상학부:국제통상</item>
     </string-array>
+
     <string-array name="array_인제니움학부대학">
         <item>인제니움학부</item>
     </string-array>
-    <string-array name="array_동북아대학">
-        <item>동북아대학</item>
-    </string-array>
+
 </resources>

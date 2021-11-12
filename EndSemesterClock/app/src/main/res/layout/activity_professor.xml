@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <Spinner
-        android:id="@+id/spinnerprofessor2"
+        android:id="@+id/spinnerprofessor1"
         android:layout_width="199dp"
         android:layout_height="26dp"
         android:background="#5EFFFFFF"
@@ -20,15 +20,15 @@
         app:layout_constraintHorizontal_bias="0.721"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086"
+        app:layout_constraintVertical_bias="0.027"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Spinner
-        android:id="@+id/spinnerprofessor1"
+        android:id="@+id/spinnerprofessor2"
         android:layout_width="199dp"
         android:layout_height="26dp"
         android:background="#5EFFFFFF"
-        android:entries="@array/array_전자정보공과대학"
+        android:entries="@array/array_소프트웨어융합대학"
         android:fontFamily="@font/malang"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +36,7 @@
         app:layout_constraintHorizontal_bias="0.721"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027"
+        app:layout_constraintVertical_bias="0.086"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -83,29 +83,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="347dp"
-        android:layout_height="454dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.534" />
 
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="29dp"
-        android:layout_height="28dp"
-        android:scaleType="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProfessor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
-        tools:srcCompat="@drawable/back" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerprofessor2"
+    />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
