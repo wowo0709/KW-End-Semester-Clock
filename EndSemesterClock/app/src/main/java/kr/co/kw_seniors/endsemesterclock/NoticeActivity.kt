@@ -34,6 +34,7 @@ class NoticeActivity : AppCompatActivity() {
         const val BACHELOR_TAB = "[학사]"
         const val STUDENT_TAB = "[학생]"
         const val ENROLL_TAB = "[등록/장학]"
+        const val MY_TAB = "즐겨찾기"
     }
     // 레이아웃 바인딩
     val binding by lazy{ActivityNoticeBinding.inflate(layoutInflater)}
@@ -91,6 +92,9 @@ class NoticeActivity : AppCompatActivity() {
                     3 -> {
                         data = loadData(ENROLL_TAB)
                     }
+                    4 -> {
+                        data = loadData(MY_TAB)
+                    }
                 }
                 setData(data)
             }
@@ -129,9 +133,12 @@ class NoticeActivity : AppCompatActivity() {
     // Room에 저장된 아이템 리스트 불러오기
     private fun loadData(category: String): MutableList<NoticeItem>{
         var data: MutableList<NoticeItem> = mutableListOf()
-
         // TODO: Room의 데이터 가져오기
-        data = helper?.noticeItemDAO()?.getCategoryData(category)!!
+        if (category == MY_TAB){
+            // data =
+        }else {
+            data = helper?.noticeItemDAO()?.getCategoryData(category)!!
+        }
 
         return data
     }
@@ -158,7 +165,7 @@ class NoticeActivity : AppCompatActivity() {
                     // url, category, title, info 파싱
                     url = KW_URL + item.select("a").attr("href")
                     category = item.select("strong.category").text()
-                    title = item.select("a").text().split("]")[1]
+                    title = item.select("a").text().split("]").last()
                     info = item.select("p.info").text()
                     val noticeItem = NoticeItem(url, category, title, info)
                     helper?.noticeItemDAO()?.insert(noticeItem)
