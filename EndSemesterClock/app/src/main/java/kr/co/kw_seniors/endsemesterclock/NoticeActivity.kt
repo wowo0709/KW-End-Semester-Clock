@@ -25,7 +25,7 @@ class NoticeActivity : AppCompatActivity() {
         const val AFTER_PAGE2_FRONT_BASE_URL = "https://www.kw.ac.kr/ko/life/notice.jsp?MaxRows=10&tpage="
         const val AFTER_PAGE2_BACK_BASE_URL = "&searchKey=1&searchVal=&srCategoryId="
         // 가져올 페이지 수
-        const val MAX_PAGE = 10
+        const val MAX_PAGE = 3
         // HTML 문서 내에서 공지사항 아이템 태그의 경로
         const val ITEM_ROUTE = "div.notice div.list-box div.board-list-box ul li div"
 
@@ -34,6 +34,7 @@ class NoticeActivity : AppCompatActivity() {
         const val BACHELOR_TAB = "[학사]"
         const val STUDENT_TAB = "[학생]"
         const val ENROLL_TAB = "[등록/장학]"
+        const val MY_TAB = "즐겨찾기"
     }
     // 레이아웃 바인딩
     val binding by lazy{ActivityNoticeBinding.inflate(layoutInflater)}
@@ -41,6 +42,8 @@ class NoticeActivity : AppCompatActivity() {
     var helper: RoomHelper? = null
     // 리사이클러 뷰 어댑터
     lateinit var adapter: NoticeRecyclerAdapter
+    // 수정할 데이터를 임시 저장할 프로퍼티
+    var updateNotice: NoticeItem? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +53,9 @@ class NoticeActivity : AppCompatActivity() {
         // RoomHelper 생성
         helper = Room.databaseBuilder(this, RoomHelper::class.java, "notice_item")
             .allowMainThreadQueries().build()
+        adapter = NoticeRecyclerAdapter()
+        adapter.helper = helper
+        adapter.noticeActivity = this
 
         // 웹 크롤링
         for (category in arrayOf(0,1,2,4)) { // 각 카테고리에 대해,
@@ -91,6 +97,9 @@ class NoticeActivity : AppCompatActivity() {
                     3 -> {
                         data = loadData(ENROLL_TAB)
                     }
+                    4 -> {
+                        data = loadData(MY_TAB)
+                    }
                 }
                 setData(data)
             }
@@ -108,8 +117,10 @@ class NoticeActivity : AppCompatActivity() {
     }
 
     private fun setData(data: List<NoticeItem>){
-        adapter = NoticeRecyclerAdapter()
-        adapter.listData.addAll(data?:listOf())
+        // adapter = NoticeRecyclerAdapter()
+        // adapter.listData.addAll(data?:listOf())
+        adapter.listData.clear()
+        adapter.listData.addAll(data)
         adapter.notifyDataSetChanged()
         binding.recyclerViewNotice.adapter = adapter
         binding.recyclerViewNotice.layoutManager = LinearLayoutManager(this)
@@ -129,9 +140,12 @@ class NoticeActivity : AppCompatActivity() {
     // Room에 저장된 아이템 리스트 불러오기
     private fun loadData(category: String): MutableList<NoticeItem>{
         var data: MutableList<NoticeItem> = mutableListOf()
-
         // TODO: Room의 데이터 가져오기
-        data = helper?.noticeItemDAO()?.getCategoryData(category)!!
+        if (category == MY_TAB){
+            data = helper?.noticeItemDAO()?.getFavoriteData()!!
+        }else {
+            data = helper?.noticeItemDAO()?.getCategoryData(category)!!
+        }
 
         return data
     }
@@ -158,12 +172,12 @@ class NoticeActivity : AppCompatActivity() {
                     // url, category, title, info 파싱
                     url = KW_URL + item.select("a").attr("href")
                     category = item.select("strong.category").text()
-                    title = item.select("a").text().split("]")[1]
+                    title = item.select("a").text().split("]").last()
                     info = item.select("p.info").text()
-                    val noticeItem = NoticeItem(url, category, title, info)
+                    val noticeItem = NoticeItem(url, category, title, info, "false")
                     helper?.noticeItemDAO()?.insert(noticeItem)
 
-                    Log.i("NoticeActivity/UrlRun", "$url, $category, $title, $info")
+                    Log.i("NoticeActivity/UrlRun", "$url, $category, $title, $info, 'false'")
 
                 }
 
