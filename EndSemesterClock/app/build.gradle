@@ -19,6 +19,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,6 +36,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    packagingOptions{
+        pickFirst "androidsupportmultidexversion.txt"
     }
 }
 
@@ -67,6 +71,7 @@ dependencies {
 
     // multiple dex files
     implementation 'com.android.support:multidex:1.0.3'
+    // implementation 'androidx.multidex:multidex:2.0.1'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

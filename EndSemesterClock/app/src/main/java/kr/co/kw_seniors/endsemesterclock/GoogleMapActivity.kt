@@ -1,11 +1,13 @@
 package kr.co.kw_seniors.endsemesterclock
 
+import android.content.Context
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -36,6 +38,7 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityGoogleMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         // id가 map인 SupportMapFragment를 찾은 후 getMapAsync()를 호출해서
         // 안드로이드에 구글 지도를 그려달라는 요청
         val mapFragment = supportFragmentManager
@@ -75,7 +78,8 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
             .getRestaurant(SeoulOpenApi.API_KEY)
             .enqueue(object: Callback<Restaurant>{
                 override fun onResponse(call: Call<Restaurant>, response: Response<Restaurant>) {
-                    showRestaurants(response.body() as Restaurant)
+                    Log.d("loadRestaurants", "${response.body()?.LOCALDATA072404NW}")
+                    showRestaurants(response.body()?.LOCALDATA072404NW as Restaurant)
                 }
 
                 override fun onFailure(call: Call<Restaurant>, t: Throwable) {
@@ -92,7 +96,7 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
         var position: LatLng
         var marker: MarkerOptions
         val latLngBounds = LatLngBounds.Builder()
-        for (rest in restaurants.nowonRestaurants.row){
+        for (rest in restaurants.LOCALDATA072404NW.row){
             // 주소를 좌표로 변환
             coor = geocoder.getFromLocationName(rest.SITEWHLADDR, 1)
             // 위도-경도 좌표
