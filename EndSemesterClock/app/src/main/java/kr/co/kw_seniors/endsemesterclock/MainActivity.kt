@@ -33,6 +33,11 @@ class MainActivity : BaseActivity() {
             val intent = Intent(this, ProfessorActivity::class.java)
             startActivity(intent)
         }
+        // 날씨 버튼 리스너
+        binding.btnWeather.setOnClickListener {
+            val intent = Intent(this, WeatherActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
