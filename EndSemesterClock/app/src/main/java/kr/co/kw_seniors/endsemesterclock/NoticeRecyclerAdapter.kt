@@ -65,8 +65,6 @@ class NoticeRecyclerAdapter: RecyclerView.Adapter<NoticeRecyclerAdapter.NoticeRe
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeRecyclerHolder {
         val binding = NoticeRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-
-
         return NoticeRecyclerHolder(binding)
     }
 

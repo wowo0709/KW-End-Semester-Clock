@@ -11,8 +11,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EndSemesterClock"
-        >
+
+        android:theme="@style/Theme.EndSemesterClock">
+        <activity android:name=".GoogleMapActivity"></activity>
+        <!-- google map API -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDGqCKLV5W0BnxgXhO3yCD9kc3FV4X5I2g" />
+
         <activity
             android:name=".WeatherActivity"
             android:exported="true" />
