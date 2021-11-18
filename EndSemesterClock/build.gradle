@@ -10,6 +10,11 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
 
     }
+    ext{
+        googleplayServicesVersion = "17.0.1"
+        googleplayServicesVersion = "19.0.0"
+        androidMapUtilsVersion = "2.2.3"
+    }
 }
 
 allprojects {

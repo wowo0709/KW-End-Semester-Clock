@@ -33,6 +33,15 @@ class MainActivity : BaseActivity() {
             val intent = Intent(this, ProfessorActivity::class.java)
             startActivity(intent)
         }
+        // 날씨 버튼 리스너
+        binding.btnWeather.setOnClickListener {
+            // TODO: 날씨 액티비티 연결
+        }
+        // 음식점 지도 버튼 리스너
+        binding.btnMeal.setOnClickListener {
+            val intent = Intent(this, GoogleMapActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
