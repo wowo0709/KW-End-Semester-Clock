@@ -20,4 +20,6 @@ interface ProfessorItemDAO {
     fun insert(professorItem: ProfessorItem)
     @Delete
     fun delete(professorItem: ProfessorItem)
+    @Query("DELETE FROM professor_item")
+    fun clearAll();
 }

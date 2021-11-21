@@ -58,22 +58,37 @@ class NoticeActivity : AppCompatActivity() {
         adapter.noticeActivity = this
 
         // 웹 크롤링
-        for (category in arrayOf(0,1,2,4)) { // 각 카테고리에 대해,
-            for (page in 1..MAX_PAGE) { // 10 페이지 만큼,
-                var thread: Thread
-                if (page == 1) { // 각 공지사항 페이지의 1페이지만 주소가 다름
-                    thread = Thread(UrlRun(PAGE1_FRONT_BASE_URL+"$category"+PAGE1_BACK_BASE_URL, page, applicationContext))
-                } else { // 2페이지 이후로는 주소 형식이 같음 (페이지만 변화)
-                    thread = Thread(UrlRun(AFTER_PAGE2_FRONT_BASE_URL+"$page"+ AFTER_PAGE2_BACK_BASE_URL+"$category",page,applicationContext))
+        if(MainActivity.NoticeCrawling==0) {
+            helper?.noticeItemDAO()?.clearAll()     // room db data 삭제
+            for (category in arrayOf(0, 1, 2, 4)) { // 각 카테고리에 대해,
+                for (page in 1..MAX_PAGE) { // 10 페이지 만큼,
+                    var thread: Thread
+                    if (page == 1) { // 각 공지사항 페이지의 1페이지만 주소가 다름
+                        thread = Thread(
+                            UrlRun(
+                                PAGE1_FRONT_BASE_URL + "$category" + PAGE1_BACK_BASE_URL,
+                                page,
+                                applicationContext
+                            )
+                        )
+                    } else { // 2페이지 이후로는 주소 형식이 같음 (페이지만 변화)
+                        thread = Thread(
+                            UrlRun(
+                                AFTER_PAGE2_FRONT_BASE_URL + "$page" + AFTER_PAGE2_BACK_BASE_URL + "$category",
+                                page,
+                                applicationContext
+                            )
+                        )
+                    }
+                    // 스레드 실행
+                    thread.start()
+                    // 웹 크롤링 스레드가 끝날 때까지 메인 스레드 대기
+                    thread.join()
                 }
-                // 스레드 실행
-                thread.start()
-                // 웹 크롤링 스레드가 끝날 때까지 메인 스레드 대기
-                thread.join()
             }
+            Log.d("NoticeActivity/OnCreate", "웹 크롤링 완료")
+            MainActivity.NoticeCrawling = 1
         }
-        Log.d("NoticeActivity/OnCreate", "웹 크롤링 완료")
-
         // 출력될 데이터
         var data: MutableList<NoticeItem>
 

@@ -37,18 +37,18 @@
 
     <TextView
         android:id="@+id/textClock"
-        android:layout_width="351dp"
-        android:layout_height="72dp"
+        android:layout_width="355dp"
+        android:layout_height="108dp"
         android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
-        android:text="  ..일 시간 .. 분 ..초"
+        android:text="000일\n00시간 00분 00초"
         android:textColor="#FFFFFF"
-        android:textSize="44sp"
+        android:textSize="42sp"
         app:layout_constraintBottom_toBottomOf="@+id/textAppName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.212" />
 
     <TextView
         android:id="@+id/textWeather"

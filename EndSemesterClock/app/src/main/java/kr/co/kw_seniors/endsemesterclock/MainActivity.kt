@@ -7,11 +7,25 @@ import android.os.Bundle
 import android.widget.Toast
 import kr.co.hanbit.base.BaseActivity
 import kr.co.kw_seniors.endsemesterclock.databinding.ActivityMainBinding
+import java.text.SimpleDateFormat
+import java.util.*
+import android.widget.TextView
+import kotlin.concurrent.timer
 
 class MainActivity : BaseActivity() {
 
     companion object{
         const val PERM_INTERNET = 101
+
+        // 재크롤링 방지 : 0 - 현재 크롤링 x , 1 - 크롤링 o
+        var NoticeCrawling = 0
+        var ProfessorCrawling = 0   // 초기 설정은 크롤링이 안된 상태
+
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")    // 데이터 포멧
+        val End = dateFormat.parse("2021-12-21 12:00:00").time      // default 종강 시간
+        val Now = Calendar.getInstance().apply{}.time.time  // 지금 시간
+        var dDay = End-Now  // 남은 시간 계산
+        var dDayFormat = "${dDay/(24*60*60*1000)}일\n${(dDay/(60*60*1000))%24}시간 ${(dDay/(60*1000))%60}분 ${(dDay/1000)%60}초" // 출력 포멧
     }
 
     val binding by lazy {ActivityMainBinding.inflate(layoutInflater)}
@@ -19,9 +33,11 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         // 인터넷 권한 요청
         requirePermissions(arrayOf(Manifest.permission.INTERNET), PERM_INTERNET)
+
+        binding.textClock.setText(dDayFormat)   // 남은 시간 세팅
+        startTimer()    // 타이머 시작
 
         // 공지 버튼 리스너
         binding.btnNotice.setOnClickListener {
@@ -65,6 +81,16 @@ class MainActivity : BaseActivity() {
                     Toast.LENGTH_LONG
                 ).show()
                 finish()
+            }
+        }
+    }
+
+    private fun startTimer(){
+        timer(period = 1000){
+            dDay-=1000  // 1초씩 감소
+            dDayFormat = "${dDay/(24*60*60*1000)}일\n${(dDay/(60*60*1000))%24}시간 ${(dDay/(60*1000))%60}분 ${(dDay/1000)%60}초"
+            runOnUiThread{
+                binding.textClock.setText(dDayFormat)   // 남은 시간 세팅
             }
         }
     }
