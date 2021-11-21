@@ -133,16 +133,19 @@ class ProfessorActivity : AppCompatActivity() {
             .allowMainThreadQueries().build()
 
         // 웹 크롤링
-        for (i in 0 until URL.size) { // 각 카테고리에 대해,
+        if(MainActivity.ProfessorCrawling == 0) {
+            helper?.professorItemDAO()?.clearAll()  // room db data 삭제
+            for (i in 0 until URL.size) { // 각 카테고리에 대해,
                 var thread: Thread
-                thread = Thread(UrlRun(ProfessorActivity.URL[i],i,applicationContext))
+                thread = Thread(UrlRun(ProfessorActivity.URL[i], i, applicationContext))
                 // 스레드 실행
                 thread.start()
                 // 웹 크롤링 스레드가 끝날 때까지 메인 스레드 대기
                 thread.join()
+            }
+            Log.d("Professor/OnCreate", "웹 크롤링 완료")
+            MainActivity.ProfessorCrawling = 1
         }
-        Log.d("Professor/OnCreate", "웹 크롤링 완료")
-
         var data: MutableList<ProfessorItem>
 
         // 스피너 선언

@@ -23,4 +23,6 @@ interface NoticeItemDAO {
     fun delete(noticeItem: NoticeItem)
     @Update
     fun update(memo: NoticeItem)
+    @Query("DELETE FROM notice_item")
+    fun clearAll();
 }
