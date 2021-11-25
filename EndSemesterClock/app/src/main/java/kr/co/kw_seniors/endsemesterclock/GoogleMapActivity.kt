@@ -31,6 +31,8 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityGoogleMapBinding
     // GoogleMap 객체
     private lateinit var mMap: GoogleMap
+    // 위치좌표 집합
+    val latLngBounds = LatLngBounds.Builder()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,6 +69,8 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         loadRestaurants()
 
+        setCamera()
+
     }
     // 음식점 데이터 불러오기
     fun loadRestaurants(){
@@ -75,20 +79,27 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val seoulOpenService = retrofit.create(SeoulOpenService::class.java)
-        seoulOpenService
-            .getRestaurant(SeoulOpenApi.API_KEY)
-            .enqueue(object: Callback<Restaurant>{
-                override fun onResponse(call: Call<Restaurant>, response: Response<Restaurant>) {
-                    Log.d("loadRestaurants", "${response.body()}")
-                    showRestaurants(response.body() as Restaurant)
-                }
+        for (n in 1..140) {
+            Log.d("page_num","$n")
+            seoulOpenService
+                .getRestaurant(SeoulOpenApi.API_KEY, "${100*(n-1)+1}", "${100*n}")
+                .enqueue(object : Callback<Restaurant> {
+                    override fun onResponse(
+                        call: Call<Restaurant>,
+                        response: Response<Restaurant>
+                    ) {
+                        Log.d("loadRestaurants", "${response.body()}")
+                        showRestaurants(response.body() as Restaurant)
+                    }
 
-                override fun onFailure(call: Call<Restaurant>, t: Throwable) {
-                    Toast.makeText(baseContext, "서버에서 데이터를 가져올 수 없습니다.",
-                                    Toast.LENGTH_LONG).show()
-                }
-
-            })
+                    override fun onFailure(call: Call<Restaurant>, t: Throwable) {
+                        Toast.makeText(
+                            baseContext, "서버에서 데이터를 가져올 수 없습니다.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                })
+        }
 
     }
     // 음식점 위치를 마커로 표시하기
@@ -101,7 +112,6 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
         var longitude: Double
         var position: LatLng
         var marker: MarkerOptions
-        val latLngBounds = LatLngBounds.Builder()
         var i = 0
         for (rest in restaurants.LOCALDATA_072404_NW.row){
             i += 1
@@ -110,7 +120,7 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
             // coor = geocoder.getFromLocationName(rest.SITEWHLADDR, 1)
             // 위도-경도 좌표
             // position = LatLng(coor[0].latitude, coor[0].longitude)
-            if(rest.X=="" || rest.Y=="" || rest.TRDSTATENM != "폐업")
+            if(rest.X=="" || rest.Y=="" || rest.TRDSTATENM == "폐업")
                 continue
             Log.i("ktcoor", "latitude: ${rest.X} longitude: ${rest.Y}")
             tmPt = CoordPoint(rest.X.toDouble(),rest.Y.toDouble())
@@ -122,20 +132,28 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
             position = LatLng(latitude, longitude)
             // 마커 생성
-            marker = MarkerOptions().position(position).title(rest.BPLCNM) // 사업장명
-            var obj = mMap.addMarker(marker)
-            obj.tag = "영업장명: " + rest.BPLCNM + "\n" +
-                        "판매정보: " + rest.UPTAENM + "\n" +
-                        "전화번호: " + rest.SITETEL + "\n" +
-                        "주소" + rest.SITEWHLADDR
+            marker = MarkerOptions().position(position).title(rest.BPLCNM)// 사업장명
+            mMap.addMarker(marker)
             // 카메라 위치 조정
-            latLngBounds.include(marker.position)
+            // latLngBounds.include(marker.position)
         }
         // 광운대 좌표: 37.6194, 127.0598
 //        val bounds = latLngBounds.build()
 //        val padding = 15
 //        val updated = CameraUpdateFactory.newLatLngBounds(bounds, padding)
 //        mMap.moveCamera(updated)
+
+//        val LATLNG = LatLng(37.6194, 127.0598)
+//        val cameraPosition = CameraPosition.Builder()
+//            .target(LATLNG)
+//            .zoom(16.0f)
+//            .build()
+//        val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
+//        mMap.moveCamera(cameraUpdate)
+    }
+
+    // 카메라 설정
+    fun setCamera(){
         val LATLNG = LatLng(37.6194, 127.0598)
         val cameraPosition = CameraPosition.Builder()
             .target(LATLNG)
