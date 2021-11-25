@@ -27,12 +27,12 @@ data class Row(
     val MULTUSNUPSOYN: String,
     val OPNSFTEAMCODE: String,
     val RDNPOSTNO: String,
-    val RDNWHLADDR: String, // 도로명 주소
+    val RDNWHLADDR: String,
     val ROPNYMD: String,
     val SITEAREA: String,
     val SITEPOSTNO: String,
     val SITETEL: String,
-    val SITEWHLADDR: String, // 지번 주소
+    val SITEWHLADDR: String,
     val SNTUPTAENM: String,
     val TOTEPNUM: String,
     val TRDPJUBNSENM: String,
