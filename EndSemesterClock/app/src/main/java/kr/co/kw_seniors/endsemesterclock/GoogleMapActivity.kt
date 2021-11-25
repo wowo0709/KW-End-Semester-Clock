@@ -1,9 +1,7 @@
 package kr.co.kw_seniors.endsemesterclock
 
-import android.content.Context
 import android.content.Intent
 import android.location.Address
-import android.location.Geocoder
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,11 +11,10 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import kr.co.hanbit.base.BaseActivity
 import kr.co.kw_seniors.endsemesterclock.data.Restaurant
 import kr.co.kw_seniors.endsemesterclock.databinding.ActivityGoogleMapBinding
 import retrofit2.Call
@@ -25,6 +22,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.location.Geocoder as Geocoder
 
 class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -53,14 +51,15 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         mMap.setOnMarkerClickListener {
-            if(it.tag != null){
-                var url = it.tag as String
-                if(!url.startsWith("http")){
-                    url = "http://${url}"
-                }
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                startActivity(intent)
-            }
+//            if(it.tag != null){
+//                var url = it.tag as String
+//                if(!url.startsWith("http")){
+//                    url = "http://${url}"
+//                }
+//                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+//                startActivity(intent)
+//            }
+//            true
             true
         }
 
@@ -78,8 +77,8 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
             .getRestaurant(SeoulOpenApi.API_KEY)
             .enqueue(object: Callback<Restaurant>{
                 override fun onResponse(call: Call<Restaurant>, response: Response<Restaurant>) {
-                    Log.d("loadRestaurants", "${response.body()?.LOCALDATA072404NW}")
-                    showRestaurants(response.body()?.LOCALDATA072404NW as Restaurant)
+                    Log.d("loadRestaurants", "${response.body()}")
+                    showRestaurants(response.body() as Restaurant)
                 }
 
                 override fun onFailure(call: Call<Restaurant>, t: Throwable) {
@@ -88,6 +87,7 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
 
             })
+
     }
     // 음식점 위치를 마커로 표시하기
     fun showRestaurants(restaurants: Restaurant){
@@ -96,21 +96,37 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
         var position: LatLng
         var marker: MarkerOptions
         val latLngBounds = LatLngBounds.Builder()
-        for (rest in restaurants.LOCALDATA072404NW.row){
+        var i = 0
+        for (rest in restaurants.LOCALDATA_072404_NW.row){
+            i += 1
+            Log.d("showRestaurant", "$i: " + rest.BPLCNM)
             // 주소를 좌표로 변환
             coor = geocoder.getFromLocationName(rest.SITEWHLADDR, 1)
             // 위도-경도 좌표
             position = LatLng(coor[0].latitude, coor[0].longitude)
             // 마커 생성
-            marker = MarkerOptions().position(position).title(rest.BPLCNM) // 사업장명
-            var obj = mMap.addMarker(marker)
-            obj.tag = rest.HOMEPAGE
-            // 카메라 위치 조정
-            latLngBounds.include(marker.position)
+            if (rest.TRDSTATENM != "폐업") {
+                marker = MarkerOptions().position(position).title(rest.BPLCNM) // 사업장명
+                var obj = mMap.addMarker(marker)
+                obj.tag = "영업장명: " + rest.BPLCNM + "\n" +
+                        "판매정보: " + rest.UPTAENM + "\n" +
+                        "전화번호: " + rest.SITETEL + "\n" +
+                        "주소" + rest.SITEWHLADDR
+                // 카메라 위치 조정
+                latLngBounds.include(marker.position)
+            }
         }
+        // 광운대 좌표: 37.6194, 127.0598
         val bounds = latLngBounds.build()
-        val padding = 5
+        val padding = 15
         val updated = CameraUpdateFactory.newLatLngBounds(bounds, padding)
         mMap.moveCamera(updated)
+//        val LATLNG = LatLng(3.6194, 127.0598)
+//        val cameraPosition = CameraPosition.Builder()
+//            .target(LATLNG)
+//            .zoom(15.0f)
+//            .build()
+//        val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
+//        mMap.moveCamera(cameraUpdate)
     }
 }
