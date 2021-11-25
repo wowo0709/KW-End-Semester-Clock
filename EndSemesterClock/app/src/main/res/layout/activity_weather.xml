@@ -83,10 +83,10 @@
         app:layout_constraintVertical_bias="0.977" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/weatherIv"
         android:layout_width="217dp"
         android:layout_height="92dp"
-        app:srcCompat="@drawable/cloud"
+        android:src="@drawable/cloud"
         tools:layout_editor_absoluteX="97dp"
         tools:layout_editor_absoluteY="63dp" />
 
