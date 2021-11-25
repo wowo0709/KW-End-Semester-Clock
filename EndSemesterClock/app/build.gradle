@@ -54,6 +54,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation files('libs\\TransCoord.jar')
     // Room
     def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
@@ -80,4 +81,8 @@ dependencies {
     //WeatherActivity에서 @SerializedName 메서드를 사용하기 위한 의존성
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
+
+    // Maps SDK 유틸리티
+    implementation 'com.google.maps.android:android-maps-utils:2.2.3'
+    implementation 'com.google.maps.android:maps-utils-ktx:3.2.0'
 }
