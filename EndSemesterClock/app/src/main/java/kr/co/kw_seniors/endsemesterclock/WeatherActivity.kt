@@ -34,7 +34,7 @@ class WeatherActivity : AppCompatActivity() {
         var AppId = "745cc7df93b0641772ea3cd85925e2cb"//https://home.openweathermap.org 에서의 키값
         var lat = "37.445293" //위도 좌표
         var lon = "126.785823" //경도 좌표
-        /*
+        
         var locationNManager: LocationManager? = null
         val REQUIRED_PERMISSIONS =
             arrayOf(
@@ -42,7 +42,7 @@ class WeatherActivity : AppCompatActivity() {
                 android.Manifest.permission.ACCESS_COARSE_LOCATION
             )
         val PERMISSIONS_REQUEST_CODE = 100
-         */
+         
     }
 
     val binding by lazy { ActivityWeatherBinding.inflate(layoutInflater) }
@@ -89,7 +89,7 @@ class WeatherActivity : AppCompatActivity() {
 
         })
 
-        /*
+        
         //현재 좌표를 얻기 위한 함수
         fun getLatLng(): Location {
             var currentLatLng: Location? = null
@@ -106,7 +106,7 @@ class WeatherActivity : AppCompatActivity() {
                 hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED
             ) {
                 val locatioNProvider = LocationManager.GPS_PROVIDER
-                currentLatLng = locatioNManager?.getLastKnownLocation(locatioNProvider)
+                currentLatLng = locationNManager?.getLastKnownLocation(locatioNProvider)
             } else {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(
                         this,
@@ -133,7 +133,7 @@ class WeatherActivity : AppCompatActivity() {
 
         //좌표를 출력하는 함수
         fun getLocation() {
-            locatioNManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+            locationNManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
             var userLocation: Location = getLatLng()
             if (userLocation != null) {
                 lat = userLocation.latitude.toString()
@@ -144,9 +144,11 @@ class WeatherActivity : AppCompatActivity() {
                 Log.d("CheckCurrentLocation", "실패!")
             }
         }
-        */
+        
     }
 }
+
+/*특정 좌표의 날씨 위치 정보 얻는 클래스,인터페이스*/
 
 interface WeatherService{
 
