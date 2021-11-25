@@ -7,6 +7,7 @@
     android:background="@drawable/kwang2"
     tools:context=".MainActivity">
 
+
     <Spinner
         android:id="@+id/spinnerprofessor1"
         android:layout_width="199dp"
@@ -73,6 +74,7 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
         android:fontFamily="@font/malang"
         android:text="광운대 종강시계"
         android:textColor="#FFFFFF"
@@ -80,22 +82,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.977" />
 
-
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProfessor"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="374dp"
+        android:layout_height="496dp"
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerprofessor2"
-    />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerprofessor2" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
+        android:text="  성명    직위   교내전화   이메일    홈페이지"
+        android:fontFamily="@font/malang"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/recyclerViewProfessor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerprofessor2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
