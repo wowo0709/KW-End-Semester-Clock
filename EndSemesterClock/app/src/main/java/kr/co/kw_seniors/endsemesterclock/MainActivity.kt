@@ -20,10 +20,11 @@ class MainActivity : BaseActivity() {
         // 재크롤링 방지 : 0 - 현재 크롤링 x , 1 - 크롤링 o
         var NoticeCrawling = 0
         var ProfessorCrawling = 0   // 초기 설정은 크롤링이 안된 상태
-
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")    // 데이터 포멧
-        val End = dateFormat.parse("2021-12-21 12:00:00").time      // default 종강 시간
-        val Now = Calendar.getInstance().apply{}.time.time  // 지금 시간
+        var dateString = "2021-12-21"
+        var timeString = "12:00:00"
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd / hh:mm:ss")    // 데이터 포멧
+        var End = dateFormat.parse("${dateString} / ${timeString}").time      // default 종강 시간
+        var Now = Calendar.getInstance().apply{}.time.time  // 지금 시간
         var dDay = End-Now  // 남은 시간 계산
         var dDayFormat = "${dDay/(24*60*60*1000)}일\n${(dDay/(60*60*1000))%24}시간 ${(dDay/(60*1000))%60}분 ${(dDay/1000)%60}초" // 출력 포멧
     }
@@ -60,7 +61,10 @@ class MainActivity : BaseActivity() {
             val intent = Intent(this, GoogleMapActivity::class.java)
             startActivity(intent)
         }
-
+        binding.btnOption.setOnClickListener{
+            val intent = Intent(this, OptionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     // 권한 허용 시
