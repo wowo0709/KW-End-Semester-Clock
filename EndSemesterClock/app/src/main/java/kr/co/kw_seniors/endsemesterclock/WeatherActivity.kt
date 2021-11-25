@@ -54,6 +54,14 @@ class WeatherActivity : AppCompatActivity() {
                     binding.tvtem.text=cTemp.toString()
                     binding.tvhigh.text=maxTemp.toString()
                     binding.tvlow.text=minTemp.toString()
+
+                    val imageView = binding.weatherIv
+
+                    if (cTemp.toDouble()>25.0){
+                        imageView.setImageResource(R.drawable.sun)
+                    }else {
+                        imageView.setImageResource(R.drawable.cloud)
+                    }
                 }
             }
 
