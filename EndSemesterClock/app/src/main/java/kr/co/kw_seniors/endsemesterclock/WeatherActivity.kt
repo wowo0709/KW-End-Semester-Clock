@@ -47,21 +47,28 @@ class WeatherActivity : AppCompatActivity() {
                 if(response.code() == 200){
                     val weatherResponse = response.body()
                     Log.d("MainActivity", "result: " + weatherResponse.toString())
-                    var cTemp =  weatherResponse!!.main!!.temp - 273.15  //켈빈을 섭씨로 변환
-                    var minTemp = weatherResponse!!.main!!.temp_min - 273.15
-                    var maxTemp = weatherResponse!!.main!!.temp_max - 273.15
+                    var cTemp =  weatherResponse!!.main!!.temp - 273.15 as Int  //켈빈을 섭씨로 변환
+                    var minTemp = weatherResponse!!.main!!.temp_min - 273.15 as Int 
+                    var maxTemp = weatherResponse!!.main!!.temp_max - 273.15 as Int
+                    var hum = weatherResponse!!.main!!.humidity as Int //습도
+                    
+                    //var bigString = binding.tvword //우아한형제 스타일 문구
 
                     binding.tvtem.text=cTemp.toString()
                     binding.tvhigh.text=maxTemp.toString()
                     binding.tvlow.text=minTemp.toString()
-
-                    val imageView = binding.weatherIv
-
-                    if (cTemp.toDouble()>25.0){
-                        imageView.setImageResource(R.drawable.sun)
-                    }else {
-                        imageView.setImageResource(R.drawable.cloud)
+                    
+                    /*
+                    if (hum > 90){
+                        bigString.text = "" // 습도 높을 때 
+                    }else if(cTemp > 25) {
+                        bigString.text = "" // 더울 때 
+                    }else{
+                        bigString.text = "" // 안더울 때
                     }
+                    */
+                    
+                    
                 }
             }
 
