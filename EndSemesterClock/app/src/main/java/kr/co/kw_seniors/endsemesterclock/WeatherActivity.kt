@@ -50,17 +50,10 @@ class WeatherActivity : AppCompatActivity() {
                     var cTemp =  weatherResponse!!.main!!.temp - 273.15  //켈빈을 섭씨로 변환
                     var minTemp = weatherResponse!!.main!!.temp_min - 273.15
                     var maxTemp = weatherResponse!!.main!!.temp_max - 273.15
-                    val stringBuilder =
-                        "지역: " + weatherResponse!!.sys!!.country + "\n" +
-                                "현재기온: " + cTemp + "\n" +
-                                "최저기온: " + minTemp + "\n" +
-                                "최고기온: " + maxTemp + "\n" +
-                                "풍속: " + weatherResponse!!.wind!!.speed+ "\n" +
-                                "일출시간: " + weatherResponse!!.sys!!.sunrise + "\n" +
-                                "일몰시간: " + weatherResponse!!.sys!!.sunset + "\n"+
-                                "아이콘: " + weatherResponse!!.weather!!.get(0).icon + "\n"
 
-                    Log.d("WeatherApi",stringBuilder)
+                    binding.tvtem.text=cTemp.toString()
+                    binding.tvhigh.text=maxTemp.toString()
+                    binding.tvlow.text=minTemp.toString()
                 }
             }
 
