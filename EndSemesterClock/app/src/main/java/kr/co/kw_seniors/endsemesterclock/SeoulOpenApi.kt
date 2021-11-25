@@ -13,6 +13,6 @@ class SeoulOpenApi {
 }
 interface SeoulOpenService{
     // http://openapi.seoul.go.kr:8088/784565556d776a733130344b6b677864/json/LOCALDATA_072404_NW/1/5/
-    @GET("{api_key}/json/LOCALDATA_072404_NW/1/50")
+    @GET("{api_key}/json/LOCALDATA_072404_NW/1/100")
     fun getRestaurant(@Path("api_key") key: String): Call<Restaurant>
 }

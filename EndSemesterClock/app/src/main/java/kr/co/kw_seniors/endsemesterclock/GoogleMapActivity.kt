@@ -2,7 +2,6 @@ package kr.co.kw_seniors.endsemesterclock
 
 import android.content.Intent
 import android.location.Address
-import android.location.Geocoder
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +11,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
@@ -22,6 +22,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.location.Geocoder as Geocoder
 
 class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -50,7 +51,6 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         mMap.setOnMarkerClickListener {
-            it.showInfoWindow()
 //            if(it.tag != null){
 //                var url = it.tag as String
 //                if(!url.startsWith("http")){
@@ -87,6 +87,7 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
 
             })
+
     }
     // 음식점 위치를 마커로 표시하기
     fun showRestaurants(restaurants: Restaurant){
@@ -120,5 +121,12 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
         val padding = 15
         val updated = CameraUpdateFactory.newLatLngBounds(bounds, padding)
         mMap.moveCamera(updated)
+//        val LATLNG = LatLng(3.6194, 127.0598)
+//        val cameraPosition = CameraPosition.Builder()
+//            .target(LATLNG)
+//            .zoom(15.0f)
+//            .build()
+//        val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
+//        mMap.moveCamera(cameraUpdate)
     }
 }
