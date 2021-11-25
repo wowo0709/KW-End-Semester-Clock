@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
-        android:text="광운대 종강시계"
-        android:textColor="#FFFFFF"
         android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
+        android:text="광운대 종강시계"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -23,32 +23,31 @@
     <TextView
         android:id="@+id/textString"
         android:layout_width="114dp"
-        android:layout_height="25dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="598dp"
         android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text=" 종강까지 얼마나..."
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textClock"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textClock"
         android:layout_width="355dp"
-        android:layout_height="108dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="492dp"
         android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text="000일\n00시간 00분 00초"
         android:textColor="#FFFFFF"
         android:textSize="42sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textAppName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.212" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textWeather"
@@ -174,6 +173,17 @@
         app:layout_constraintVertical_bias="0.812"
         app:srcCompat="@drawable/wwwww"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnOption"
+        android:layout_width="79dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="328dp"
+        android:layout_marginTop="4dp"
+        android:background="#00FFFFFF"
+        android:text="설정"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

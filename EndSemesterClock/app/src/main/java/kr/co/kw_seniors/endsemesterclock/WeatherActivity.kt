@@ -18,8 +18,8 @@ class WeatherActivity : AppCompatActivity() {
     companion object{
         var BaseUrl = "http://api.openweathermap.org/"
         var AppId = "745cc7df93b0641772ea3cd85925e2cb"//https://home.openweathermap.org 에서의 키값
-        var lat = "37.445293" //좌표들
-        var lon = "126.785823" //좌표들
+        var lat = "37.6444" //위도 좌표
+        var lon = "127.1444" //경도 좌표
     }
 
     val binding by lazy { ActivityWeatherBinding.inflate(layoutInflater) }
@@ -47,20 +47,28 @@ class WeatherActivity : AppCompatActivity() {
                 if(response.code() == 200){
                     val weatherResponse = response.body()
                     Log.d("MainActivity", "result: " + weatherResponse.toString())
-                    var cTemp =  weatherResponse!!.main!!.temp - 273.15  //켈빈을 섭씨로 변환
-                    var minTemp = weatherResponse!!.main!!.temp_min - 273.15
-                    var maxTemp = weatherResponse!!.main!!.temp_max - 273.15
-                    val stringBuilder =
-                        "지역: " + weatherResponse!!.sys!!.country + "\n" +
-                                "현재기온: " + cTemp + "\n" +
-                                "최저기온: " + minTemp + "\n" +
-                                "최고기온: " + maxTemp + "\n" +
-                                "풍속: " + weatherResponse!!.wind!!.speed+ "\n" +
-                                "일출시간: " + weatherResponse!!.sys!!.sunrise + "\n" +
-                                "일몰시간: " + weatherResponse!!.sys!!.sunset + "\n"+
-                                "아이콘: " + weatherResponse!!.weather!!.get(0).icon + "\n"
+                    var cTemp =  weatherResponse!!.main!!.temp - 273.15 as Int  //켈빈을 섭씨로 변환
+                    var minTemp = weatherResponse!!.main!!.temp_min - 273.15 as Int 
+                    var maxTemp = weatherResponse!!.main!!.temp_max - 273.15 as Int
+                    var hum = weatherResponse!!.main!!.humidity as Int //습도
+                    
+                    //var bigString = binding.tvword //우아한형제 스타일 문구
 
-                    Log.d("WeatherApi",stringBuilder)
+                    binding.tvtem.text=cTemp.toString()
+                    binding.tvhigh.text=maxTemp.toString()
+                    binding.tvlow.text=minTemp.toString()
+                    
+                    /*
+                    if (hum > 90){
+                        bigString.text = "" // 습도 높을 때 
+                    }else if(cTemp > 25) {
+                        bigString.text = "" // 더울 때 
+                    }else{
+                        bigString.text = "" // 안더울 때
+                    }
+                    */
+                    
+                    
                 }
             }
 
