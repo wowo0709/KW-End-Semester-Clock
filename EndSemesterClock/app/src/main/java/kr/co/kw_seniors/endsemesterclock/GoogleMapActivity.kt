@@ -15,6 +15,8 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.android.clustering.ClusterItem
+import com.google.maps.android.clustering.ClusterManager
 import kr.co.kw_seniors.endsemesterclock.data.Restaurant
 import kr.co.kw_seniors.endsemesterclock.databinding.ActivityGoogleMapBinding
 import retrofit2.Call
@@ -33,6 +35,8 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     // 위치좌표 집합
     val latLngBounds = LatLngBounds.Builder()
+    // 마커 클러스터 매니저
+    private lateinit var clusterManager: ClusterManager<MyItem>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,19 +57,6 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         // 메서드 안에서 미리 선언된 mMap 프로퍼티에 GoogleMap을 저장해두면 액티비티 전체에서 맵을 사용 가능
         mMap = googleMap
-
-        mMap.setOnMarkerClickListener {
-            it.showInfoWindow()
-//            if(it.tag != null){
-//                var url = it.tag as String
-//                if(!url.startsWith("http")){
-//                    url = "http://${url}"
-//                }
-//                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-//                startActivity(intent)
-//            }
-            true
-        }
 
         loadRestaurants()
 
@@ -161,5 +152,60 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
             .build()
         val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
         mMap.moveCamera(cameraUpdate)
+
+        // 마커 클러스터링
+        clusterManager = ClusterManager(this, mMap)
+        mMap.setOnCameraIdleListener(clusterManager)
+        mMap.setOnMarkerClickListener(clusterManager)
+
+        addItems()
+    }
+
+    // 마커 아이템 추가
+    private fun addItems() {
+
+        // Set some lat/lng coordinates to start with.
+        var lat = 51.5145160
+        var lng = -0.1270060
+
+        // Add ten cluster items in close proximity, for purposes of this example.
+        for (i in 0..9) {
+            val offset = i / 60.0
+            lat += offset
+            lng += offset
+            val offsetItem =
+                MyItem(lat, lng, "Title $i", "Snippet $i")
+            clusterManager.addItem(offsetItem)
+        }
+    }
+
+    inner class MyItem(
+        lat: Double,
+        lng: Double,
+        title: String,
+        snippet: String
+    ): ClusterItem{
+
+        private val position: LatLng
+        private val title: String
+        private val snippet: String
+
+        override fun getPosition(): LatLng {
+            return position
+        }
+
+        override fun getTitle(): String? {
+            return title
+        }
+
+        override fun getSnippet(): String? {
+            return snippet
+        }
+
+        init{
+            position = LatLng(lat, lng)
+            this.title = title
+            this.snippet = snippet
+        }
     }
 }
