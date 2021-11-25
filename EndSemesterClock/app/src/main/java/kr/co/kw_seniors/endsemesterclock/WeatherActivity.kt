@@ -18,8 +18,8 @@ class WeatherActivity : AppCompatActivity() {
     companion object{
         var BaseUrl = "http://api.openweathermap.org/"
         var AppId = "745cc7df93b0641772ea3cd85925e2cb"//https://home.openweathermap.org 에서의 키값
-        var lat = "37.445293" //좌표들
-        var lon = "126.785823" //좌표들
+        var lat = "37.6444" //위도 좌표
+        var lon = "127.1444" //경도 좌표
     }
 
     val binding by lazy { ActivityWeatherBinding.inflate(layoutInflater) }
