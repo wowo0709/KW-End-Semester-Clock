@@ -22,7 +22,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.math.floor
 import android.location.Geocoder as Geocoder
+import kr.hyosang.coordinate.*
 
 class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -51,6 +53,7 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         mMap.setOnMarkerClickListener {
+            it.showInfoWindow()
 //            if(it.tag != null){
 //                var url = it.tag as String
 //                if(!url.startsWith("http")){
@@ -59,7 +62,6 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
 //                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
 //                startActivity(intent)
 //            }
-//            true
             true
         }
 
@@ -91,8 +93,12 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     // 음식점 위치를 마커로 표시하기
     fun showRestaurants(restaurants: Restaurant){
-        val geocoder = Geocoder(this)
-        var coor: MutableList<Address>
+        // val geocoder = Geocoder(this)
+        // var coor: MutableList<Address>
+        var tmPt: CoordPoint
+        var wgsPt: CoordPoint
+        var latitude: Double
+        var longitude: Double
         var position: LatLng
         var marker: MarkerOptions
         val latLngBounds = LatLngBounds.Builder()
@@ -101,32 +107,41 @@ class GoogleMapActivity : AppCompatActivity(), OnMapReadyCallback {
             i += 1
             Log.d("showRestaurant", "$i: " + rest.BPLCNM)
             // 주소를 좌표로 변환
-            coor = geocoder.getFromLocationName(rest.SITEWHLADDR, 1)
+            // coor = geocoder.getFromLocationName(rest.SITEWHLADDR, 1)
             // 위도-경도 좌표
-            position = LatLng(coor[0].latitude, coor[0].longitude)
+            // position = LatLng(coor[0].latitude, coor[0].longitude)
+            if(rest.X=="" || rest.Y=="" || rest.TRDSTATENM != "폐업")
+                continue
+            Log.i("ktcoor", "latitude: ${rest.X} longitude: ${rest.Y}")
+            tmPt = CoordPoint(rest.X.toDouble(),rest.Y.toDouble())
+            wgsPt = TransCoord.getTransCoord(tmPt, TransCoord.COORD_TYPE_TM,TransCoord.COORD_TYPE_WGS84)
+            latitude = wgsPt.y
+            longitude = wgsPt.x
+            Log.i("wgscoor", "latitude: ${latitude} longitude: ${longitude}")
+
+
+            position = LatLng(latitude, longitude)
             // 마커 생성
-            if (rest.TRDSTATENM != "폐업") {
-                marker = MarkerOptions().position(position).title(rest.BPLCNM) // 사업장명
-                var obj = mMap.addMarker(marker)
-                obj.tag = "영업장명: " + rest.BPLCNM + "\n" +
+            marker = MarkerOptions().position(position).title(rest.BPLCNM) // 사업장명
+            var obj = mMap.addMarker(marker)
+            obj.tag = "영업장명: " + rest.BPLCNM + "\n" +
                         "판매정보: " + rest.UPTAENM + "\n" +
                         "전화번호: " + rest.SITETEL + "\n" +
                         "주소" + rest.SITEWHLADDR
-                // 카메라 위치 조정
-                latLngBounds.include(marker.position)
-            }
+            // 카메라 위치 조정
+            latLngBounds.include(marker.position)
         }
         // 광운대 좌표: 37.6194, 127.0598
-        val bounds = latLngBounds.build()
-        val padding = 15
-        val updated = CameraUpdateFactory.newLatLngBounds(bounds, padding)
-        mMap.moveCamera(updated)
-//        val LATLNG = LatLng(3.6194, 127.0598)
-//        val cameraPosition = CameraPosition.Builder()
-//            .target(LATLNG)
-//            .zoom(15.0f)
-//            .build()
-//        val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
-//        mMap.moveCamera(cameraUpdate)
+//        val bounds = latLngBounds.build()
+//        val padding = 15
+//        val updated = CameraUpdateFactory.newLatLngBounds(bounds, padding)
+//        mMap.moveCamera(updated)
+        val LATLNG = LatLng(37.6194, 127.0598)
+        val cameraPosition = CameraPosition.Builder()
+            .target(LATLNG)
+            .zoom(16.0f)
+            .build()
+        val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
+        mMap.moveCamera(cameraUpdate)
     }
 }
