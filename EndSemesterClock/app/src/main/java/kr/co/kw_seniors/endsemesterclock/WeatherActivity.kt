@@ -34,7 +34,7 @@ class WeatherActivity : AppCompatActivity() {
         var AppId = "745cc7df93b0641772ea3cd85925e2cb"//https://home.openweathermap.org 에서의 키값
         var lat = "37.445293" //위도 좌표
         var lon = "126.785823" //경도 좌표
-        
+
         var locationNManager: LocationManager? = null
         val REQUIRED_PERMISSIONS =
             arrayOf(
@@ -42,8 +42,64 @@ class WeatherActivity : AppCompatActivity() {
                 android.Manifest.permission.ACCESS_COARSE_LOCATION
             )
         val PERMISSIONS_REQUEST_CODE = 100
-         
+
     }
+    
+    //권한을 얻고 현재 좌표를 반환하는 함수
+    fun getLatLng(): Location {
+        var currentLatLng: Location? = null
+        var hasFineLocationPermission = ContextCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.ACCESS_FINE_LOCATION
+        )
+        var hasCoarseLocationPermission = ContextCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
+            hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED
+        ) {
+            val locationNProvider = LocationManager.GPS_PROVIDER
+            currentLatLng = locationNManager?.getLastKnownLocation(locationNProvider)
+        } else {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    REQUIRED_PERMISSIONS[0]
+                )
+            ) {
+                Toast.makeText(this, "앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
+                ActivityCompat.requestPermissions(
+                    this,
+                    REQUIRED_PERMISSIONS,
+                    PERMISSIONS_REQUEST_CODE
+                )
+            } else {
+                ActivityCompat.requestPermissions(
+                    this,
+                    REQUIRED_PERMISSIONS,
+                    PERMISSIONS_REQUEST_CODE
+                )
+            }
+            currentLatLng = getLatLng()
+        }
+        return currentLatLng!!
+    }
+
+    //getLatLng()를 통해 현재 위치 정보를 받고 이를 문자열로 출력하는 함수
+    fun getLocation() {
+        locationNManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+        var userLocation: Location = getLatLng()
+        if (userLocation != null) {
+            lat = userLocation.latitude.toString()
+            lon = userLocation.longitude.toString()
+            Log.d("CheckCurrentLocation", "현재 내 위치 값: ${lat}, ${lon}")
+        }
+        else{
+            Log.d("CheckCurrentLocation", "실패!")
+        }
+    }
+
 
     val binding by lazy { ActivityWeatherBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,67 +140,13 @@ class WeatherActivity : AppCompatActivity() {
                                 "아이콘: " + weatherResponse!!.weather!!.get(0).icon + "\n"
 
                     Log.d("WeatherApi", stringBuilder)
+
+                    getLocation()
                 }
             }
-
         })
 
-        
-        //현재 좌표를 얻기 위한 함수
-        fun getLatLng(): Location {
-            var currentLatLng: Location? = null
-            var hasFineLocationPermission = ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            )
-            var hasCoarseLocationPermission = ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION
-            )
 
-            if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
-                hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED
-            ) {
-                val locatioNProvider = LocationManager.GPS_PROVIDER
-                currentLatLng = locationNManager?.getLastKnownLocation(locatioNProvider)
-            } else {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(
-                        this,
-                        REQUIRED_PERMISSIONS[0]
-                    )
-                ) {
-                    Toast.makeText(this, "앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
-                    ActivityCompat.requestPermissions(
-                        this,
-                        REQUIRED_PERMISSIONS,
-                        PERMISSIONS_REQUEST_CODE
-                    )
-                } else {
-                    ActivityCompat.requestPermissions(
-                        this,
-                        REQUIRED_PERMISSIONS,
-                        PERMISSIONS_REQUEST_CODE
-                    )
-                }
-                currentLatLng = getLatLng()
-            }
-            return currentLatLng!!
-        }
-
-        //좌표를 출력하는 함수
-        fun getLocation() {
-            locationNManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
-            var userLocation: Location = getLatLng()
-            if (userLocation != null) {
-                lat = userLocation.latitude.toString()
-                lon = userLocation.longitude.toString()
-                Log.d("CheckCurrentLocation", "현재 내 위치 값: ${lat}, ${lon}")
-            }
-            else{
-                Log.d("CheckCurrentLocation", "실패!")
-            }
-        }
-        
     }
 }
 
