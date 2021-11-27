@@ -47,28 +47,27 @@ class WeatherActivity : AppCompatActivity() {
                 if(response.code() == 200){
                     val weatherResponse = response.body()
                     Log.d("MainActivity", "result: " + weatherResponse.toString())
-                    var cTemp =  weatherResponse!!.main!!.temp - 273.15 as Int  //켈빈을 섭씨로 변환
-                    var minTemp = weatherResponse!!.main!!.temp_min - 273.15 as Int 
-                    var maxTemp = weatherResponse!!.main!!.temp_max - 273.15 as Int
-                    var hum = weatherResponse!!.main!!.humidity as Int //습도
+                    var cTemp =  weatherResponse!!.main!!.temp.toInt() - 273  //켈빈을 섭씨로 변환
+                    var minTemp = weatherResponse!!.main!!.temp_min.toInt() - 273
+                    var maxTemp = weatherResponse!!.main!!.temp_max.toInt() - 273
+                    var hum = weatherResponse!!.main!!.humidity.toInt()//습도
                     
-                    //var bigString = binding.tvword //우아한형제 스타일 문구
+                    var bigString = binding.tvtext//우아한 형제들 문구 관련 텍스트뷰
 
                     binding.tvtem.text=cTemp.toString()
-                    binding.tvhigh.text=maxTemp.toString()
-                    binding.tvlow.text=minTemp.toString()
+                    binding.tvhigh.text="최고 온도:"+maxTemp.toString()
+                    binding.tvlow.text="최저 온도:"+minTemp.toString()
                     
-                    /*
+                    
                     if (hum > 90){
-                        bigString.text = "" // 습도 높을 때 
-                    }else if(cTemp > 25) {
-                        bigString.text = "" // 더울 때 
+                        bigString.text = "찝찝하다" // 습도 높을 때
+                    }else if(cTemp > 25){
+                        bigString.text = "덥다" // 더울 때
+                    }else if(cTemp > 10){
+                        bigString.text = "평범하다" // 평범하다
                     }else{
-                        bigString.text = "" // 안더울 때
+                        bigString.text = "춥다" // 춥다
                     }
-                    */
-                    
-                    
                 }
             }
 
