@@ -9,18 +9,18 @@
 
     <TextView
         android:id="@+id/tvhigh"
-        android:layout_width="65dp"
-        android:layout_height="38dp"
+        android:layout_width="130dp"
+        android:layout_height="24dp"
         android:fontFamily="@font/malang"
-        android:text="최저:"
+        android:text="최저기온:"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintVertical_bias="0.611" />
 
     <TextView
         android:id="@+id/tvtem"
@@ -36,7 +36,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419" />
+        app:layout_constraintVertical_bias="0.462" />
 
     <TextView
         android:id="@+id/tvarea"
@@ -52,22 +52,37 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintVertical_bias="0.349" />
+
+    <TextView
+        android:id="@+id/tvtext"
+        android:layout_width="309dp"
+        android:layout_height="55dp"
+        android:fontFamily="@font/malang"
+        android:text="텍스트 출력 부분"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
 
     <TextView
         android:id="@+id/tvlow"
-        android:layout_width="65dp"
-        android:layout_height="38dp"
+        android:layout_width="130dp"
+        android:layout_height="24dp"
         android:fontFamily="@font/malang"
-        android:text="최고:"
+        android:text="최고기온:"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintVertical_bias="0.577" />
 
     <TextView
         android:id="@+id/textView9"
@@ -81,13 +96,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
-
-    <ImageView
-        android:id="@+id/weatherIv"
-        android:layout_width="217dp"
-        android:layout_height="92dp"
-        android:src="@drawable/cloud"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="63dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
