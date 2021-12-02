@@ -105,14 +105,12 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="19dp"
-        android:text="  성명    직위   교내전화   이메일    홈페이지"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/malang"
-        android:textSize="20sp"
+        android:text="  성명    직위   교내전화   이메일    홈페이지"
         android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/recyclerViewProfessor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
