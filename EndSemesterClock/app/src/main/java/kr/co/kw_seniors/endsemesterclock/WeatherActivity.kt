@@ -55,8 +55,8 @@ class WeatherActivity : AppCompatActivity() {
                     var bigString = binding.tvtext//우아한 형제들 문구 관련 텍스트뷰
 
                     binding.tvtem.text=cTemp.toString()
-                    binding.tvhigh.text="최고 온도:"+maxTemp.toString()
-                    binding.tvlow.text="최저 온도:"+minTemp.toString()
+                    binding.tvhigh.text="최고 온도: "+maxTemp.toString()+"도"
+                    binding.tvlow.text="최저 온도: "+minTemp.toString()+"도"
                     
                     
                     if (hum > 90){
