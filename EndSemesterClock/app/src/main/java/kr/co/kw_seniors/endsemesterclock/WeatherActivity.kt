@@ -62,11 +62,11 @@ class WeatherActivity : AppCompatActivity() {
                     if (hum > 90){
                         bigString.text = "찝찝하다" // 습도 높을 때
                     }else if(cTemp > 25){
-                        bigString.text = "덥다" // 더울 때
+                        bigString.text = "쨍쨍하다" // 더울 때
                     }else if(cTemp > 10){
-                        bigString.text = "평범하다" // 평범하다
+                        bigString.text = "날씨좋다" // 평범하다
                     }else{
-                        bigString.text = "춥다" // 춥다
+                        bigString.text = "껴입어라" // 춥다
                     }
                 }
             }
