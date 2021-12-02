@@ -9,10 +9,10 @@
 
     <TextView
         android:id="@+id/tvhigh"
-        android:layout_width="130dp"
+        android:layout_width="100dp"
         android:layout_height="24dp"
         android:fontFamily="@font/malang"
-        android:text="        최저기온:"
+        android:text="   최저기온:"
         android:textAlignment="inherit"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,10 +71,10 @@
 
     <TextView
         android:id="@+id/tvlow"
-        android:layout_width="130dp"
+        android:layout_width="100dp"
         android:layout_height="24dp"
         android:fontFamily="@font/malang"
-        android:text="        최고기온:"
+        android:text="   최고기온:"
         android:textAlignment="inherit"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
