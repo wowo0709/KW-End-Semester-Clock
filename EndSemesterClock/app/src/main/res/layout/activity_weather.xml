@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tvhigh"
-        android:layout_width="130dp"
+        android:layout_width="60dp"
         android:layout_height="24dp"
         android:fontFamily="@font/malang"
         android:text="최저기온:"
@@ -17,7 +17,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.611" />
@@ -55,6 +55,38 @@
         app:layout_constraintVertical_bias="0.349" />
 
     <TextView
+        android:id="@+id/tvarea3"
+        android:layout_width="40dp"
+        android:layout_height="24dp"
+        android:fontFamily="@font/malang"
+        android:text="최고"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.577" />
+
+    <TextView
+        android:id="@+id/tvarea4"
+        android:layout_width="40dp"
+        android:layout_height="24dp"
+        android:fontFamily="@font/malang"
+        android:text="최저"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.611" />
+
+    <TextView
         android:id="@+id/tvtext"
         android:layout_width="309dp"
         android:layout_height="55dp"
@@ -71,7 +103,7 @@
 
     <TextView
         android:id="@+id/tvlow"
-        android:layout_width="130dp"
+        android:layout_width="60dp"
         android:layout_height="24dp"
         android:fontFamily="@font/malang"
         android:text="최고기온:"
@@ -79,7 +111,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.577" />
