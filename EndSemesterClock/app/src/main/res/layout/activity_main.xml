@@ -124,7 +124,7 @@
         tools:srcCompat="@android:drawable/divider_horizontal_dark" />
 
     <ImageButton
-        android:id="@+id/btnMeal"
+        android:id="@+id/btnWeather"
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:background="#00FFFFFF"
@@ -155,7 +155,7 @@
         tools:srcCompat="@android:drawable/divider_horizontal_dark" />
 
     <ImageButton
-        android:id="@+id/btnWeather"
+        android:id="@+id/btnMeal"
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:background="#00FFFFFF"
