@@ -22,29 +22,31 @@
     <TextView
         android:id="@+id/textString"
         android:layout_width="114dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="598dp"
+        android:layout_height="50dp"
         android:fontFamily="@font/malang"
         android:text=" 종강까지 얼마나..."
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101" />
 
     <TextView
         android:id="@+id/textClock"
-        android:layout_width="355dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="492dp"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
         android:fontFamily="@font/malang"
         android:text="000일\n00시간 00분 00초"
         android:textColor="#FFFFFF"
-        android:textSize="42sp"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.186" />
 
     <TextView
         android:id="@+id/textWeather"
@@ -56,10 +58,10 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786" />
+        app:layout_constraintVertical_bias="0.929" />
 
     <TextView
         android:id="@+id/textMeal"
@@ -71,10 +73,10 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintHorizontal_bias="0.868"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786" />
+        app:layout_constraintVertical_bias="0.929" />
 
     <TextView
         android:id="@+id/textNotice"
@@ -86,10 +88,10 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintHorizontal_bias="0.868"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.662" />
 
     <TextView
         android:id="@+id/textProfessor"
@@ -101,17 +103,16 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.537" />
+        app:layout_constraintVertical_bias="0.662" />
 
     <ImageButton
         android:id="@+id/btnProfessor"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:background="#00FFFFFF"
-        android:backgroundTint="#FFFFFF"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:background="@drawable/professor3"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,15 +120,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.547"
-        app:srcCompat="@android:drawable/dark_header"
-        tools:ignore="SpeakableTextPresentCheck"
         tools:srcCompat="@android:drawable/divider_horizontal_dark" />
 
     <ImageButton
         android:id="@+id/btnWeather"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:background="#00FFFFFF"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:background="@drawable/wwwww"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -140,9 +139,9 @@
 
     <ImageButton
         android:id="@+id/btnNotice"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:background="#00E3E3E3"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:background="@drawable/gongji1"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,9 +155,9 @@
 
     <ImageButton
         android:id="@+id/btnMeal"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:background="#00FFFFFF"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:background="@drawable/mmmeal"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
