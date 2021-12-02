@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/kwang"
+    android:background="@drawable/kwang2"
     tools:context=".MainActivity">
 
     <TextView
@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
-        android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text="광운대 종강시계"
         android:textColor="#FFFFFF"
@@ -25,7 +24,6 @@
         android:layout_width="114dp"
         android:layout_height="0dp"
         android:layout_marginBottom="598dp"
-        android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text=" 종강까지 얼마나..."
         android:textColor="#FFFFFF"
@@ -40,7 +38,6 @@
         android:layout_width="355dp"
         android:layout_height="0dp"
         android:layout_marginBottom="492dp"
-        android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text="000일\n00시간 00분 00초"
         android:textColor="#FFFFFF"
@@ -53,116 +50,83 @@
         android:id="@+id/textWeather"
         android:layout_width="122dp"
         android:layout_height="20dp"
-        android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text="Weather"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
+        app:layout_constraintVertical_bias="0.786" />
 
     <TextView
         android:id="@+id/textMeal"
         android:layout_width="122dp"
         android:layout_height="20dp"
-        android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text="Meal"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintHorizontal_bias="0.837"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.886" />
+        app:layout_constraintVertical_bias="0.786" />
 
     <TextView
         android:id="@+id/textNotice"
         android:layout_width="122dp"
         android:layout_height="20dp"
-        android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text="Notice"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintHorizontal_bias="0.837"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
+        app:layout_constraintVertical_bias="0.538" />
 
     <TextView
         android:id="@+id/textProfessor"
         android:layout_width="122dp"
         android:layout_height="20dp"
-        android:background="#5EFFFFFF"
         android:fontFamily="@font/malang"
         android:text="Professor"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.628" />
+        app:layout_constraintVertical_bias="0.537" />
 
     <ImageButton
         android:id="@+id/btnProfessor"
-        android:layout_width="122dp"
-        android:layout_height="122dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:background="#00FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.518"
-        app:srcCompat="@drawable/professor3"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintVertical_bias="0.547"
+        app:srcCompat="@android:drawable/dark_header"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:srcCompat="@android:drawable/divider_horizontal_dark" />
 
     <ImageButton
         android:id="@+id/btnMeal"
-        android:layout_width="110dp"
-        android:layout_height="108dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.804"
-        app:srcCompat="@drawable/mmmeal"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/btnNotice"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:background="#00E3E3E3"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52"
-        app:srcCompat="@drawable/gongji1"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/btnWeather"
-        android:layout_width="110dp"
-        android:layout_height="108dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -170,8 +134,39 @@
         app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812"
-        app:srcCompat="@drawable/wwwww"
+        app:layout_constraintVertical_bias="0.868"
+        app:srcCompat="@android:drawable/divider_horizontal_dark"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnNotice"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:background="#00E3E3E3"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.547"
+        app:srcCompat="@android:drawable/divider_horizontal_dark"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:srcCompat="@android:drawable/divider_horizontal_dark" />
+
+    <ImageButton
+        android:id="@+id/btnWeather"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.868"
+        app:srcCompat="@android:drawable/divider_horizontal_dark"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
