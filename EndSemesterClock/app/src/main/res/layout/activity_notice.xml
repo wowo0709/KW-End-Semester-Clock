@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/kwang3"
     tools:context=".NoticeActivity">
 
     <com.google.android.material.tabs.TabLayout
@@ -12,9 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
+        android:background="#0AFFFFFF"
+        android:fontFamily="@font/malang"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="#80000000"
+        app:tabTextColor="#000000">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -44,12 +50,27 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewNotice"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="396dp"
+        android:layout_height="636dp"
         android:layout_margin="4dp"
+        android:fontFamily="@font/malang"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:fontFamily="@font/malang"
+        android:text="광운대 종강시계"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
